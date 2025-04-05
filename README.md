@@ -68,7 +68,7 @@ sudo raspi-config
 sudo nmtui
 ```
 - Establecimos una IP estática (192.168.1.x)
-- Configuramos la puerta de enlace, en nuestro caso 192.168.1.1
+- Configuramos la puerta de enlace (192.168.1.1)
 - Añadimos los DNS de Google (8.8.8.8, 8.8.4.4)
 
 ### Actualización del sistema
@@ -129,8 +129,13 @@ sudo systemctl start fail2ban
 ## Configuración de Acceso Remoto (No-IP)
 
 ### Creación de cuenta y hostname
-- Creamos una cuenta en No-IP.com
-- Configuramos un hostname para nuestro dominio dinámico
+- Creamos una cuenta en No-IP.com (usamos la versión gratuita)
+- Configuramos un hostname: [TU-DOMINIO].ddns.net
+  > Nota: Con la cuenta gratuita:
+  > - Puedes usar dominios gratuitos como `.ddns.net`, `.hopto.org`, `.sytes.net`, etc.
+  > - Tienes un límite de 3 hostnames activos
+  > - Debes confirmar cada hostname cada 30 días para mantenerlos activos
+  > - Los dominios personalizados requieren una suscripción de pago
 
 ### Instalación del cliente DUC
 ```bash
@@ -171,15 +176,15 @@ sudo systemctl start noip2
 ```
 
 ## Configuración del reenvío de puertos
-- Accedemos a la interfaz del router (192.168.1.1)
+- Accedemos a la interfaz del router
 - Configuramos en IPv4 Port Mapping:
-  - Puerto 80 (HTTP): Redirigido a nuestra IP local
-  - Puerto 443 (HTTPS): Redirigido a nuestra IP local
+  - Puerto 80 (HTTP): Redirigido a la IP local del servidor
+  - Puerto 443 (HTTPS): Redirigido a la IP local del servidor
 
 ## Verificación del Funcionamiento
 Verificamos que el servidor es accesible desde Internet visitando:
-- http://[tu-dominio].ddns.net
-- https://[tu-dominio].ddns.net (después de configurar SSL)
+- http://[TU-DOMINIO].ddns.net
+- https://[TU-DOMINIO].ddns.net (después de configurar SSL)
 
 ## Configuración de HTTPS con Let's Encrypt
 ```bash
@@ -187,13 +192,13 @@ Verificamos que el servidor es accesible desde Internet visitando:
 sudo apt install certbot python3-certbot-nginx
 
 # Obtención del certificado SSL y configuración automática de Nginx
-sudo certbot --nginx -d [tu-dominio].ddns.net
+sudo certbot --nginx -d [TU-DOMINIO].ddns.net
 ```
 
 Durante el proceso de configuración:
 - Proporcionamos una dirección de correo electrónico para notificaciones importantes
 - Aceptamos los términos de servicio de Let's Encrypt
-- El certificado se genera correctamente y se guarda en /etc/letsencrypt/live/[tu-dominio].ddns.net/
+- El certificado se genera correctamente y se guarda en /etc/letsencrypt/live/[TU-DOMINIO].ddns.net/
 - Certbot configura automáticamente Nginx para usar HTTPS
 
 Para comprobar la configuración de renovación automática:
@@ -222,7 +227,8 @@ sudo dpkg-reconfigure unattended-upgrades
 
 ## Notas Adicionales
 - La Raspberry Pi 5 con 8GB de RAM puede manejar entre 6-8 aplicaciones web simultáneamente
-- El nombre de dominio configurado en No-IP apunta siempre a la IP pública actual
+- Se accede mediante SSH usando la IP local configurada
+- El nombre de dominio configurado en No-IP apunta siempre a nuestra IP pública actual
 
 ## Próximos pasos
 - Configuración de entornos para despliegue de aplicaciones Python (Django, FastAPI)
