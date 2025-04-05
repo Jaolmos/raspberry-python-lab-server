@@ -56,13 +56,20 @@ Este repositorio documenta el proceso completo de configuración de un servidor 
   - Habilitamos SSH
   - Configuramos zona horaria y teclado
 - Conectamos la Raspberry Pi a la red mediante cable Ethernet
-- Configuramos una IP estática (192.168.1.20) fuera del rango DHCP del router para evitar conflictos de IP
 
-### Conexión inicial por SSH
+### Localización y conexión inicial por SSH
+1. Primero localizamos la Raspberry Pi en nuestra red local usando:
 ```bash
-ssh usuario@192.168.1.20
+ping raspberrypi.local -4
 ```
-> Nota: Reemplaza "usuario" con el nombre de usuario configurado en el Imager. La IP 192.168.1.20 es la que configuramos como estática para la Raspberry Pi, asegurándonos de que está fuera del rango de IPs que asigna automáticamente nuestro router (DHCP).
+> Nota: Este comando nos mostrará la IP dinámica asignada por DHCP (en nuestro caso fue 192.168.1.118). 
+> Alternativamente, podemos usar aplicaciones como IP Scanner para Windows.
+
+2. Nos conectamos por SSH usando la IP obtenida:
+```bash
+ssh [TU-USUARIO]@192.168.1.118
+```
+> Nota: En la primera conexión nos pedirá confirmar la autenticidad del host (escribimos 'yes') y luego introducimos nuestra contraseña.
 
 ### Configuración básica con raspi-config
 ```bash
@@ -74,13 +81,28 @@ sudo raspi-config
 - Configuramos idioma (es_ES.UTF-8), zona horaria (Europa/Madrid) y teclado español
 - Configuramos el país (España) para WiFi
 
-### Configuración de red
+### Configuración de IP estática
 ```bash
 sudo nmtui
 ```
-- Establecimos una IP estática (192.168.1.x)
-- Configuramos la puerta de enlace (192.168.1.1)
-- Añadimos los DNS de Google (8.8.8.8, 8.8.4.4)
+1. Cambiamos la configuración IP de automático a manual
+2. Configuramos la IP estática fuera del rango DHCP del router (100-200):
+   - IP: 192.168.1.20/24 (elegimos .20 por estar fuera del rango DHCP del router)
+     > Nota: El /24 indica que usamos una máscara de subred 255.255.255.0, lo que permite 254 dispositivos en nuestra red local
+   - Puerta de enlace: 192.168.1.1
+   - DNS: 8.8.8.8, 8.8.4.4
+3. Reiniciamos la Raspberry:
+```bash
+sudo reboot
+```
+4. Verificamos la nueva IP:
+```bash
+ping 192.168.1.20
+```
+5. Nos conectamos por SSH a la nueva IP estática:
+```bash
+ssh [TU-USUARIO]@192.168.1.20
+```
 
 ### Actualización del sistema
 ```bash
