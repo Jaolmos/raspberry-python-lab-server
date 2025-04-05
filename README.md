@@ -50,8 +50,19 @@ Este repositorio documenta el proceso completo de configuración de un servidor 
 ### Instalación del sistema operativo
 - Descargamos el Raspberry Pi Imager desde la [página oficial](https://www.raspberrypi.com/software/)
 - Utilizamos esta herramienta para instalar Raspberry Pi OS en la tarjeta SD de 256GB
-- Durante la configuración en el imager, podemos preconfigurar WiFi, SSH y otros ajustes básicos
+- Durante la configuración en el imager, configuramos:
+  - Usuario y contraseña
+  - Conexión WiFi (opcional)
+  - Habilitamos SSH
+  - Configuramos zona horaria y teclado
 - Conectamos la Raspberry Pi a la red mediante cable Ethernet
+- Configuramos una IP estática (192.168.1.20) fuera del rango DHCP del router para evitar conflictos de IP
+
+### Conexión inicial por SSH
+```bash
+ssh usuario@192.168.1.20
+```
+> Nota: Reemplaza "usuario" con el nombre de usuario configurado en el Imager. La IP 192.168.1.20 es la que configuramos como estática para la Raspberry Pi, asegurándonos de que está fuera del rango de IPs que asigna automáticamente nuestro router (DHCP).
 
 ### Configuración básica con raspi-config
 ```bash
