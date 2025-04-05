@@ -69,7 +69,7 @@ ping raspberrypi.local -4
 ```bash
 ssh [TU-USUARIO]@192.168.1.118
 ```
-> Nota: En la primera conexión nos pedirá confirmar la autenticidad del host (escribimos 'yes') y luego introducimos nuestra contraseña.
+> Nota: En la primera conexión nos pedirá confirmar la autenticidad del host (escribimos 'yes') y luego introducimos nuestra contraseña. Una vez conectados, tendremos acceso remoto a la terminal de la Raspberry Pi desde nuestro ordenador.
 
 ### Configuración básica con raspi-config
 ```bash
