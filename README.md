@@ -1,6 +1,18 @@
-# Configuración de Servidor Web Nginx con Raspberry Pi 5
+# Servidor Web Self-Hosting Python con Raspberry Pi 5
 
-Este repositorio documenta el proceso completo de configuración de un servidor web Nginx usando una Raspberry Pi 5. El proyecto abarca tanto el hardware (componentes físicos, montaje, refrigeración) como el software (sistema operativo, servidor Nginx, seguridad, certificados SSL), proporcionando una solución completa para alojar proyectos personales web Python y funcionar como laboratorio de pruebas. Esta configuración permite experimentar con diferentes frameworks y tecnologías web en un entorno controlado y accesible.
+Servidor self-hosting (autoalojado) usando una Raspberry Pi 5, diseñado como laboratorio de desarrollo y pruebas. El proyecto combina hardware optimizado (SSD, refrigeración activa) con una arquitectura de software moderna y segura (Nginx, Docker, Cloudflare Tunnel), creando una infraestructura flexible para alojar aplicaciones web Python tanto para acceso público (vía Internet) como privado (red local).
+
+**Características principales:**
+- Alto rendimiento con SSD y 8GB RAM
+- Seguridad avanzada sin puertos expuestos
+- Acceso público mediante Cloudflare Tunnel
+- Acceso local en red doméstica
+- Despliegue simplificado con Docker
+- SSL/HTTPS automático
+- Capacidad para múltiples aplicaciones simultáneas
+- Entorno de laboratorio para experimentación
+
+Esta configuración proporciona un entorno de self-hosting completo, escalable y seguro para desarrollar, probar y desplegar aplicaciones web desde casa, con la flexibilidad de ejecutar servicios tanto públicos como privados según las necesidades.
 
 ## Hardware utilizado
 
@@ -268,3 +280,59 @@ sudo dpkg-reconfigure unattended-upgrades
 - Configuración de Docker para facilitar despliegues
 - Implementación de monitoreo con herramientas como Prometheus o Grafana
 - Configuración de copias de seguridad automatizadas
+
+---
+
+## Actualización - Diciembre 2025
+
+### Hardware actualizado
+
+**Almacenamiento:** microSD 256GB → **SSD Lexar SL300 1TB (USB 3.0)**
+- 10x más rápido (150 MB/s → 400-500 MB/s)
+- Mayor durabilidad y capacidad
+
+![Raspberry Pi 5 con SSD externo](images/raspberry-pi5-ssd.jpg)
+*Raspberry Pi 5 con SSD Lexar SL300 1TB conectado vía USB 3.0*
+
+### Cambios en la arquitectura
+
+**ANTES:**
+```
+Internet → Router (puertos 80/443 abiertos) → No-IP → Nginx
+```
+
+**AHORA:**
+```
+Internet → Cloudflare Tunnel (cifrado) → Nginx → Docker
+```
+
+### Mejoras principales
+
+| Aspecto | Antes | Ahora |
+|---------|-------|-------|
+| Almacenamiento | microSD 256GB | SSD Lexar 1TB |
+| Dominio | No-IP (gratis) | Dominio propio |
+| Puertos abiertos | 80, 443 | Ninguno |
+| SSL | Let's Encrypt manual | Automático (Cloudflare) |
+| Contenedores | No | Docker + Compose |
+| Protección DDoS | No | Sí (Cloudflare) |
+
+### Beneficios
+
+- **Más seguro:** Sin puertos expuestos en el router
+- **Más rápido:** SSD 10x más veloz que microSD
+- **Más escalable:** Docker facilita despliegue de aplicaciones
+- **SSL automático:** Sin configuración manual de certificados
+- **Protección incluida:** DDoS y firewall de Cloudflare
+
+### Configuración actual
+
+**Acceso SSH:** `ssh [TU-USUARIO]@192.168.1.20`
+
+**Servicios activos:**
+- Nginx (puerto 80 interno)
+- Docker y Docker Compose
+- Cloudflare Tunnel
+- UFW Firewall (solo SSH abierto)
+- Fail2ban
+
