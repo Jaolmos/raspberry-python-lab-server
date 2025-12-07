@@ -275,12 +275,6 @@ sudo dpkg-reconfigure unattended-upgrades
 - Se accede mediante SSH usando la IP local configurada
 - El nombre de dominio configurado en No-IP apunta siempre a nuestra IP pública actual
 
-## Próximos pasos
-- Configuración de entornos para despliegue de aplicaciones Python (Django, FastAPI)
-- Configuración de Docker para facilitar despliegues
-- Implementación de monitoreo con herramientas como Prometheus o Grafana
-- Configuración de copias de seguridad automatizadas
-
 ---
 
 ## Actualización - Diciembre 2025
