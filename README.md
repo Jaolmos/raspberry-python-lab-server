@@ -1,5 +1,7 @@
 # Servidor Web Self-Hosting Python con Raspberry Pi 5
 
+> **Nota:** Este documento muestra la evolución del proyecto. La primera parte describe la configuración inicial. La sección "Actualización - Diciembre 2025" al final muestra la configuración actual.
+
 Servidor self-hosting (autoalojado) usando una Raspberry Pi 5, diseñado como laboratorio de desarrollo y pruebas. El proyecto combina hardware optimizado (SSD, refrigeración activa) con una arquitectura de software moderna y segura (Nginx, Docker, Cloudflare Tunnel), creando una infraestructura flexible para alojar aplicaciones web Python tanto para acceso público (vía Internet) como privado (red local).
 
 **Características principales:**
