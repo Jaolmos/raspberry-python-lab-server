@@ -1,2 +1,6 @@
 # Ignorar todo el contenido del directorio docs
-docs/ 
+docs/
+
+# Claude Code
+CLAUDE.md
+.claude/
