@@ -8,7 +8,7 @@
 Servidor self-hosting (autoalojado) usando una Raspberry Pi 5, diseñado como laboratorio de desarrollo y pruebas. El proyecto combina hardware optimizado (SSD, refrigeración activa) con una arquitectura de software moderna y segura (Nginx, Docker, Cloudflare Tunnel), creando una infraestructura flexible para alojar aplicaciones web Python tanto para acceso público (vía Internet) como privado (red local).
 
 **Características principales:**
-- Alto rendimiento con SSD y 8GB RAM
+- Alto rendimiento con SSD NVMe y 8GB RAM
 - Seguridad avanzada sin puertos expuestos
 - Acceso público mediante Cloudflare Tunnel
 - Acceso local en red doméstica
@@ -347,20 +347,17 @@ Internet → Cloudflare Tunnel (cifrado) → Nginx → Docker
 
 Referencia: [Documentación oficial Pironman 5 Max](https://docs.sunfounder.com/projects/pironman5/es/latest/)
 
-![Pironman 5 Max - Vista en perspectiva](images/pironman5-perspective.jpg)
-*Pironman 5 Max con la Raspberry Pi 5 montada*
-
-![Pironman 5 Max - Encendida sin tapa](images/pironman5-powered-on.jpg)
-*Vista interior con ventiladores RGB y refrigeración activa*
-
 ![Pironman 5 Max - Unboxing](images/pironman5-unboxing.jpg)
 *Caja Pironman 5 Max junto al SSD NVMe Silicon Power*
 
 ![Pironman 5 Max - Frente](images/pironman5-front.jpg)
-*Vista frontal*
+*Vista frontal con pantalla OLED mostrando uso de CPU, temperatura, RAM y almacenamiento*
 
 ![Pironman 5 Max - Lateral](images/pironman5-side.jpg)
 *Vista lateral*
+
+![Pironman 5 Max - Encendida sin tapa](images/pironman5-powered-on.jpg)
+*Vista interior con ventiladores RGB, LEDs y SSD NVMe montado*
 
 ### Mejoras principales
 
@@ -374,8 +371,6 @@ Referencia: [Documentación oficial Pironman 5 Max](https://docs.sunfounder.com/
 | Gestión local | No | App web de Sunfounder (temperatura, RGB, OLED, ventiladores) |
 
 ### Configuración actual
-
-**Acceso SSH:** `ssh [TU-USUARIO]@192.168.1.20`
 
 **Servicios activos:**
 - Nginx (puerto 80 interno)
