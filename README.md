@@ -1,6 +1,9 @@
 # Servidor Web Self-Hosting Python con Raspberry Pi 5
 
-> **Nota:** Este documento muestra la evolución del proyecto. La primera parte describe la configuración inicial. La sección "Actualización - Diciembre 2025" al final muestra la configuración actual.
+> **Nota:** Este documento muestra la evolución del proyecto. La primera parte describe la configuración inicial. Las secciones de actualización (Diciembre 2025, Febrero 2026) muestran los cambios realizados. La configuración actual se encuentra al final del documento.
+
+![Pironman 5 Max - Vista en perspectiva](images/pironman5-perspective.jpg)
+*Estado actual del servidor: Raspberry Pi 5 en carcasa Pironman 5 Max*
 
 Servidor self-hosting (autoalojado) usando una Raspberry Pi 5, diseñado como laboratorio de desarrollo y pruebas. El proyecto combina hardware optimizado (SSD, refrigeración activa) con una arquitectura de software moderna y segura (Nginx, Docker, Cloudflare Tunnel), creando una infraestructura flexible para alojar aplicaciones web Python tanto para acceso público (vía Internet) como privado (red local).
 
