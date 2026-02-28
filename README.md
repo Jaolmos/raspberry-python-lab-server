@@ -321,6 +321,55 @@ Internet → Cloudflare Tunnel (cifrado) → Nginx → Docker
 - **SSL automático:** Sin configuración manual de certificados
 - **Protección incluida:** DDoS y firewall de Cloudflare
 
+### Configuración actual (diciembre 2025)
+
+**Acceso SSH:** `ssh [TU-USUARIO]@192.168.1.20`
+
+**Servicios activos:**
+- Nginx (puerto 80 interno)
+- Docker y Docker Compose
+- Cloudflare Tunnel
+- UFW Firewall (solo SSH abierto)
+- Fail2ban
+
+---
+
+## Actualización - Febrero 2026
+
+### Hardware actualizado
+
+- **Carcasa:** Carcasa básica → **Pironman 5 Max** (aleación de aluminio + acrílico)
+- **Almacenamiento:** SSD externo Lexar 1TB (USB 3.0) → **SSD interno Silicon Power PCIe M.2 NVMe 512GB Gen 3x4**
+- Se migran los datos desde el SSD USB externo al NVMe interno
+
+Referencia: [Documentación oficial Pironman 5 Max](https://docs.sunfounder.com/projects/pironman5/es/latest/)
+
+![Pironman 5 Max - Vista en perspectiva](images/pironman5-perspective.jpg)
+*Pironman 5 Max con la Raspberry Pi 5 montada*
+
+![Pironman 5 Max - Encendida sin tapa](images/pironman5-powered-on.jpg)
+*Vista interior con ventiladores RGB y refrigeración activa*
+
+![Pironman 5 Max - Unboxing](images/pironman5-unboxing.jpg)
+*Caja Pironman 5 Max junto al SSD NVMe Silicon Power*
+
+![Pironman 5 Max - Frente](images/pironman5-front.jpg)
+*Vista frontal*
+
+![Pironman 5 Max - Lateral](images/pironman5-side.jpg)
+*Vista lateral*
+
+### Mejoras principales
+
+| Aspecto | Antes | Ahora |
+|---------|-------|-------|
+| Carcasa | Básica (plástico) | Pironman 5 Max (aluminio + acrílico) |
+| Refrigeración | Disipador + ventilador pequeño | Refrigeración torre + 2 ventiladores RGB |
+| Almacenamiento | SSD externo USB 3.0 (1TB) | SSD interno NVMe PCIe Gen 3x4 (512GB) |
+| Slots disponibles | Ninguno | 2x M.2 NVMe |
+| Pantalla | No | OLED integrada (táctil) |
+| Gestión local | No | App web de Sunfounder (temperatura, RGB, OLED, ventiladores) |
+
 ### Configuración actual
 
 **Acceso SSH:** `ssh [TU-USUARIO]@192.168.1.20`
